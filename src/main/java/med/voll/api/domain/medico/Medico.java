@@ -1,17 +1,17 @@
 package med.voll.api.domain.medico;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.api.domain.endereco.Endereco;
+import med.voll.api.domain.medico.dto.DadosAtualizacaoMedico;
+import med.voll.api.domain.medico.dto.DadosCadastroMedico;
 
 @Table(name = "medicos")
 @Entity(name = "Medico")
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Medico {
 
@@ -52,10 +52,9 @@ public class Medico {
         if (dados.endereco() != null) {
             this.endereco.atualizarInformacoes(dados.endereco());
         }
-
     }
 
-    public void excluir() {
+    public void desativar() {
         this.ativo = false;
     }
 }
